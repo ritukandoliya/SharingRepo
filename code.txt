@@ -1,3 +1,82 @@
+class Employee {
+  
+    public int employeeID;
+    public String employeeName;
+    public String employeeAddress;
+  
+    // Student class constructor
+    Employee(int employeeID, String employeeName, String employeeAddress)
+    {
+        this.employeeID = employeeID;
+        this.employeeName = employeeName;
+        this.employeeAddress = employeeAddress;
+    }
+}
+
+class Merge 
+{  
+    /* Function to merge the subarrays of arr[] */  
+    void merge(Employee arr[], int begin, int middle, int end)    
+    {    
+        int p, q, r;  
+        int n1 = middle - begin + 1;    
+        int n2 = end - middle;    
+          
+       /* temporary Arrays */  
+            Employee LeftArray[] = new Employee[n1];  
+            Employee RightArray[] = new Employee[n2];  
+          
+        /* copy data to temp arrays */  
+        for (p = 0; p < n1; p++)    
+        LeftArray[p] = arr[begin + p];    
+        for (q = 0; q < n2; q++)    
+        RightArray[q] = arr[middle + 1 + q];    
+          
+        p = 0; /* initial index of first sub-array */  
+        q = 0; /* initial index of second sub-array */   
+        r = begin;  /* initial index of merged sub-array */  
+          
+        while (p < n1 && q < n2)    
+        {    
+            if(LeftArray[p].employeeID <= RightArray[q].employeeID)    
+            {    
+                arr[r] = LeftArray[p];    
+                p++;    
+            }    
+            else    
+            {    
+                arr[r] = RightArray[q];    
+                q++;    
+            }    
+            r++;    
+        }    
+        while (p<n1)    
+        {    
+            arr[r] = LeftArray[p];    
+            p++;    
+            r++;    
+        }    
+          
+        while (q<n2)    
+        {    
+            arr[r] = RightArray[q];    
+            q++;    
+            r++;    
+        }    
+    }    
+  
+    void mergeSort(Employee arr[], int begin, int end)  
+    {  
+        if (begin < end)   
+        {  
+            int middle = (begin + end) / 2;  
+            mergeSort(arr, begin, middle);  
+            mergeSort(arr, middle + 1, end);  
+            merge(arr, begin, middle, end);  
+        }  
+    }
+}
+
 public class Demo {
   
     public static void main(String args[])
@@ -14,7 +93,7 @@ public class Demo {
   
         arr[1] = new Employee(1701289219, "Omm Prasad", "Demo Address2");
         
-        arr[2] = new Employee(1701289265, "Jai Bhatt", "Demo Address3");
+        arr[2] = new Employee(1701289218, "Jai Bhatt", "Demo Address3");
         
         arr[3] = new Employee(1701289221, "Farhan Qureshi", "Demo Address4");
         
@@ -51,30 +130,20 @@ public class Demo {
         }
         
         System.out.println("After Bubble Sort:");
+        for(int i=0;i<5;i++)
+        {
+            System.out.println("Employee name: "+arr[i].employeeID+", Name: "+arr[i].employeeName+", Address: "+ arr[i].employeeAddress);
+        }
+        
+        
+        Merge m1 = new Merge();
+        m1.mergeSort(arr,0,5-1);
+        
+        System.out.println("After Merge Sort:");
         
         for(int i=0;i<5;i++)
         {
             System.out.println("Employee name: "+arr[i].employeeID+", Name: "+arr[i].employeeName+", Address: "+ arr[i].employeeAddress);
         }
     }
-}
-  
-// Creating a student class with
-// id and name as a attributes
-class Employee {
-  
-    public int employeeID;
-    public String employeeName;
-    public String employeeAddress;
-  
-    // Student class constructor
-    Employee(int employeeID, String employeeName, String employeeAddress)
-    {
-        this.employeeID = employeeID;
-        this.employeeName = employeeName;
-        this.employeeAddress = employeeAddress;
-    }
-  
-    // display() method to display
-    // the student data
 }
