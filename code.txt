@@ -1,0 +1,80 @@
+public class Demo {
+  
+    public static void main(String args[])
+    {
+  
+        // Declaring an array of student
+        Employee[] arr;
+  
+        // Allocating memory for 2 objects
+        // of type student
+        arr = new Employee[5];
+  
+        arr[0] = new Employee(1701289270, "Satyabrata", "Demo Address1");
+  
+        arr[1] = new Employee(1701289219, "Omm Prasad", "Demo Address2");
+        
+        arr[2] = new Employee(1701289265, "Jai Bhatt", "Demo Address3");
+        
+        arr[3] = new Employee(1701289221, "Farhan Qureshi", "Demo Address4");
+        
+        arr[4] = new Employee(1701289213, "Raju Rastogi", "Demo Address5");
+        
+        
+        for(int i=0;i<5;i++)
+        {
+            System.out.println("Employee name: "+arr[i].employeeID+", Name: "+arr[i].employeeName+", Address: "+ arr[i].employeeAddress);
+        }
+        
+        //bubblesort
+        for(int i=0;i<5;i++)
+        {
+            Employee temp = new Employee(0, "", "");
+            for(int j=1;j<(5-i);j++)
+            {
+                if(arr[j-1].employeeID>arr[j].employeeID)
+                {
+                    //swapping
+                    temp.employeeID = arr[j-1].employeeID;
+                    temp.employeeName = arr[j-1].employeeName;
+                    temp.employeeAddress = arr[j-1].employeeAddress;
+                    
+                    arr[j-1].employeeID = arr[j].employeeID;
+                    arr[j-1].employeeName = arr[j].employeeName;
+                    arr[j-1].employeeAddress = arr[j].employeeAddress;
+                    
+                    arr[j].employeeID = temp.employeeID;
+                    arr[j].employeeName = temp.employeeName;
+                    arr[j].employeeAddress = temp.employeeAddress;
+                }
+            }
+        }
+        
+        System.out.println("After Bubble Sort:");
+        
+        for(int i=0;i<5;i++)
+        {
+            System.out.println("Employee name: "+arr[i].employeeID+", Name: "+arr[i].employeeName+", Address: "+ arr[i].employeeAddress);
+        }
+    }
+}
+  
+// Creating a student class with
+// id and name as a attributes
+class Employee {
+  
+    public int employeeID;
+    public String employeeName;
+    public String employeeAddress;
+  
+    // Student class constructor
+    Employee(int employeeID, String employeeName, String employeeAddress)
+    {
+        this.employeeID = employeeID;
+        this.employeeName = employeeName;
+        this.employeeAddress = employeeAddress;
+    }
+  
+    // display() method to display
+    // the student data
+}
