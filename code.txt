@@ -147,3 +147,58 @@ public class Demo {
         }
     }
 }
+
+
+->Selection Sort<-
+
+class Program4
+{
+	public static void main(String args[])
+	{
+		Employee[] arr;
+		arr = new Employee[5];
+
+		arr[0]=new Employee(1,"Ritu","Rajkot");
+		arr[1]=new Employee(2,"Sakshi","Jamnagar");
+		arr[2]=new Employee(13,"Tanvi","Ahemdabad");
+		arr[3]=new Employee(4,"Jinkal","Morbi");
+		arr[4]=new Employee(15,"Gunjan","Pune");
+
+		for(int i=0;i<4;i++)
+		{
+			int min=i;
+			for(int j=i+1;j<5;j++)
+			{
+				if(arr[j].employeeId < arr[min].employeeId)
+				{
+					min=j;
+				}
+			}
+			int temp=arr[min].employeeId;
+			arr[min].employeeId=arr[i].employeeId;
+			arr[i].employeeId=temp;
+		}
+
+		System.out.println("After Bubble Sort: ");
+
+		for(int i=0;i<5;i++)
+		{
+			System.out.println("Employee Id: "+arr[i].employeeId+" Name: "+arr[i].employeeName+" Address: "+arr[i].employeeAddress);
+		} 
+	}
+}
+class Employee
+{
+	public int employeeId;
+	public String employeeName;
+	public String employeeAddress;
+
+	Employee(int employeeId,String employeeName,String employeeAddress)
+	{
+		this.employeeId=employeeId;
+		this.employeeName=employeeName;
+		this.employeeAddress=employeeAddress;
+	}
+
+
+}
